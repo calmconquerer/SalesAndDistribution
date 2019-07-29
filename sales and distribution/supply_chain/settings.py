@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
+    'payroll.apps.PayrollConfig',
     'transaction.apps.TransactionConfig',
     'django.contrib.admin',
     'django.contrib.auth',

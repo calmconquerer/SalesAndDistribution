@@ -1,0 +1,82 @@
+{% extends "transaction/base.html" %}
+{% block body %}
+
+
+<div class="card" style="width: 100%;">
+    <div class="card-header">
+        <h4 align="center">Register an Employee</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+        <form action="" id="employee-registration" autocomplete="off" method="post">
+            {% csrf_token %}
+            <li class="list-group-item">
+                <!-- Employee ID -->
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">Employee ID</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control" name="employee_id" value="" style="width:200px">
+                    </div>
+                </div>
+                <!-- Full Name -->
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">Full Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="full_name" placeholder="Jon Doe" style="width:200px" value="{{ employee_register.full_name }}" required>
+                    </div>
+                </div>
+                <!-- Email -->
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="email"
+                               value="{{employee_register.email}}" placeholder="email@example.com" style="width:200px" required>
+                    </div>
+                </div>
+                <!-- Mobile -->
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">Mobile Number</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="mobile_number" placeholder="mobile number" style="width:200px" required value="{{employee_register.mobile}}">
+                    </div>
+                </div>
+                <!-- CNIC -->
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">CNIC</label>
+                    <div class="col-sm-10">
+                        <input type="text"  class="form-control" name="cnic" placeholder="XXXXXXXXXXXXX" style="width:200px" value="{{employee_register.cnic}}" required>
+                    </div>
+                </div>
+                <!-- Date of birth -->
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">Date Of Birth</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" name="date_of_birth"  style="width:200px" value="{{employee_register.date_of_birth}}" required>
+                    </div>
+                </div>
+                <!-- Address -->
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-10">
+                        <textarea name="address" cols="30" rows="3" required></textarea>
+                    </div>
+                </div>
+                <!-- Bank Details -->
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">Bank Details</label>
+                    <div class="col-sm-10">
+                        <textarea name="bank_details" cols="30" rows="3" required></textarea>
+                    </div>
+                </div>
+            </li>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+            <br>
+        </form>
+    </ul>
+</div>
+
+
+
+{% endblock %}

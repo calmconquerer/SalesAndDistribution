@@ -90,12 +90,23 @@
           <span>Transaction</span></a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <a class="dropdown-item" href="{% url 'chart-of-account' %}">Chart Of Accounts</a>
-          <a class="dropdown-item" href="{% url 'purchase' %}">Purchase</a>
-          <a class="dropdown-item" href="{% url 'sale' %}">Sale</a>
-          <a class="dropdown-item" href="{% url 'journal-voucher-summary' %}">Journal Voucher</a>
-          <a class="dropdown-item" href="{% url 'cash-receiving-voucher' %}">Cash Receiving Vou</a>
-          <a class="dropdown-item" href="{% url 'cash-payment-voucher' %}">Cash Payment Vou</a>
-      </div>
+            <a class="dropdown-item" href="{% url 'purchase' %}">Purchase</a>
+            <a class="dropdown-item" href="{% url 'sale' %}">Sale</a>
+            <a class="dropdown-item" href="{% url 'journal-voucher-summary' %}">Journal Voucher</a>
+            <a class="dropdown-item" href="{% url 'cash-receiving-voucher' %}">Cash Receiving Vou</a>
+            <a class="dropdown-item" href="{% url 'cash-payment-voucher' %}">Cash Payment Vou</a>
+           </div>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-hidden="false">
+          <i class="fas fa-receipt"></i>
+          <span>Payroll</span></a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="{% url 'employee-register' %}">Employee Register</a>
+            <a class="dropdown-item" href="#">Employee Salary</a>
+            <a class="dropdown-item" href="#">Employee Attendance</a>
+            <a class="dropdown-item" href="#">Salary Process</a>
+           </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="{% url 'reports' %}" role="button" aria-haspopup="true" aria-expanded="false">

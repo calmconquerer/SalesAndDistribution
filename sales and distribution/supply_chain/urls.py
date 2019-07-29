@@ -29,4 +29,5 @@ urlpatterns = [
     path('register/', user_views.register, name='register'),
     path('transaction/', include('transaction.urls')),
     path('inventory/', include('inventory.urls')),
+    path('payroll/', include('payroll.urls')),
 ]
