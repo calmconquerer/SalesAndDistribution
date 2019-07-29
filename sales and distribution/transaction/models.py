@@ -133,6 +133,7 @@ class VoucherDetail(models.Model):
     invoice_id = models.IntegerField()
     header_id = models.ForeignKey(VoucherHeader, models.SET_NULL,blank=True,null=True)
 
+
 class Transactions(models.Model):
     refrence_id = models.CharField(max_length = 100)
     refrence_date = models.DateField(blank = True)
