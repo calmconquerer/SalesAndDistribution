@@ -102,10 +102,11 @@
           <i class="fas fa-receipt"></i>
           <span>Payroll</span></a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="{% url 'employee-register' %}">Employee Register</a>
-            <a class="dropdown-item" href="#">Employee Salary</a>
+            <a class="dropdown-item" href="{% url 'employee' %}">Employee</a>
+            <a class="dropdown-item" href="{% url 'employee-salary' %}">Employee Salary</a>
             <a class="dropdown-item" href="#">Employee Attendance</a>
             <a class="dropdown-item" href="#">Salary Process</a>
+            <a class="dropdown-item" href="{% url 'payroll-reports' %}">Reports</a>
            </div>
       </li>
       <li class="nav-item dropdown">
@@ -184,6 +185,7 @@
   <script type="text/javascript" src="{% static 'transaction/inventory.js' %}"></script>
   <script type="text/javascript" src="{% static 'transaction/script.js' %}"></script>
   <script type="text/javascript" src="{% static 'transaction/transaction.js' %}"></script>
+  <script type="text/javascript" src="{% static 'transaction/payroll.js' %}"></script>
 
 </body>
 

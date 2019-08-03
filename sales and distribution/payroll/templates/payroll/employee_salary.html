@@ -1,0 +1,67 @@
+{% extends "transaction/base.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+<div class="card" style="width: 100%;">
+<div class="card-header">
+  <h4>Employee Salary</h4>
+</div>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+
+    <div class="input-group">
+      <input type="text" class="form-control col-md-4" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+        <div class="col-md-8">
+            <a role="button" href="{% url 'new-employee-salary' %}" style="float:right;"
+               class="btn btn-outline-secondary" name="button"><i class="fas fa-plus"></i> Add Salary</a>
+        </div>
+      <br>
+    <ul style="list-style-type:none;" class="messages">
+      {% if messages %}
+        {% for msg in messages %}
+          <li>
+            <div class="alert {{msg.level_tag}}">
+              {{msg.message}}
+            </div>
+          </li>
+        {% endfor %}
+      {% endif %}
+    </ul>
+    <br>
+
+    </div>
+    <br>
+    <div class="table table-responsive content-loader">
+      <table class="table table-bordered" id="dataTable">
+          <thead>
+              <tr>
+                  <th>Employee ID.</th>
+                  <th width="300px">Employee Name.</th>
+                  <th>Join Date.</th>
+                  <th>Salary.</th>
+                  <th width="600px">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for value in employee_salary_details %}
+                <tr>
+                    <td>{{ value.1 }}</td>
+                    <td>{{value.2}}</td>
+                    <td>{{value.3}}</td>
+                    <td>{{value.4}}</td>
+                    <td><a class="edit_list" href="{% url 'edit-employee-salary' pk=value.0 %}" data-toggle=""><i class="material-icons" style="text-align: center;">&#xE254;</i></a></td>
+            {% endfor %}
+                </tr>
+          </tbody>
+      </table>
+    </div>
+  </li>
+</ul>
+</div>
+
+{% endblock body %}

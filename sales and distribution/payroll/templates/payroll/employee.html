@@ -1,0 +1,73 @@
+{% extends "transaction/base.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+<div class="card" style="width: 100%;">
+    <div class="card-header">
+        <h4>Employees</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+
+            <div class="input-group">
+                <input type="text" class="form-control col-md-4" placeholder="Search for..." aria-label="Search"
+                       aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="col-md-8">
+                    <a role="button" href="{% url 'employee-register' %}" style="float:right;"
+                       class="btn btn-outline-secondary"
+                       name="button"><i class="fas fa-plus"></i> Add New Employee</a>
+                </div>
+                <br>
+                <ul style="list-style-type:none;" class="messages">
+                    {% if messages %}
+                    {% for msg in messages %}
+                    <li>
+                        <div class="alert {{msg.level_tag}}">
+                            {{msg.message}}
+                        </div>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+                <br>
+
+            </div>
+            <br>
+            <div class="table table-responsive content-loader">
+                <table class="table table-bordered" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>Employee ID.</th>
+                        <th width="300px">Employee Name.</th>
+                        <th>CNIC No.</th>
+                        <th width="600px">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for value in employee %}
+                    <tr>
+                        <td>{{ value.employee_id }}</td>
+                        <td>{{value.full_name}}</td>
+                        <td>{{value.cnic}}</td>
+                        <td><a class="edit_list" href="" data-toggle=""><i class="material-icons">&#xE254;</i></a><a
+                                class="return" href=""><i class="fas fa-undo"></i></a><a href="" target="_blank"
+                                                                                         data-toggle=""><i
+                                class="fa fa-print" id="print_icon" aria-hidden="true"></i></a><a class=""
+                                                                                                  href="{% url 'delete-employee' pk=value.id %}"
+                                                                                                  data-toggle="tooltip"><i
+                                class="material-icons" style="color: red;">&#xE872;</i></a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </li>
+    </ul>
+</div>
+
+{% endblock body %}

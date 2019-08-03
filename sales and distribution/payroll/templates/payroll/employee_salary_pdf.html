@@ -1,0 +1,101 @@
+{% load mathfilters %}
+<html>
+<head>
+  <title>{{header.dc_no}}</title>
+<style>
+    @page {
+        size: a4 portrait;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 30pt; width: 512pt; top: 20pt; height: 390pt;
+        }
+        @frame content_frame {          /* Content Frame */
+            left: 20pt; width: 550pt; top: 10pt; height: 780pt;
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 30pt; width: 535pt; top: 755pt; height: 120pt;
+        }
+    }
+    table > thead > tr > th {
+      text-align: center;
+      font-family: "Times New Roman", Times, serif;
+        }
+        table > thead > tr > td {
+          text-align: center;
+          font-family: "Times New Roman", Times, serif;
+        }
+        .no-bottom-border{
+            border-bottom:none;
+        }
+        .heading_row{
+          border-top:1px solid black;
+          border-bottom: 1px solid black;
+        }
+</style>
+</head>
+
+<body>
+    <!-- Content for Static Frame 'header_frame' -->
+    <div id="header_content">
+      <div>
+         {% for value in company_info %}
+         <h1 style="text-align:center; font-size:400%; font-family: "Times New Roman", Times, serif; " color="#0a012c" ><b>{{value.company_name}}</b></h1>
+         {% endfor %}
+         <p style="text-align:center; padding-top:-60px ;font-size:200%; font-family: "Times New Roman", Times, serif; " color="#0a012c" >Salary Report</p>
+     </div>
+    </div>
+
+<!-- Content for Static Frame 'footer_frame' -->
+<div id="footer_content">
+  <div class="footer">
+     </div>
+  page <pdf:pagenumber> of <pdf:pagecount>
+  <p style="text-align:center;">Software Developed By TechFurq, 92 322 2832789, info@techfurq.com, www.techfurq.com</p>
+</div>
+
+    <!-- HTML Content -->
+
+  <br>
+  <br>
+  <div class="body">
+     <br>
+     <br>
+     <br>
+     <header>
+       <table style="border-radius: 55px; border-bottom:1px solid black; border-spacing: 40px 10px;" cellpadding="3" bgcolor="#f7f7f7">
+       </table>
+     </header>
+     <br>
+          <br>
+               <br>
+     <font size="5" ><b>Date Printed:</b></font>&nbsp;&nbsp;&nbsp; <font size="5">{{date_printed}}</font>
+     <br>
+    <table cellpadding="3" id="item_table"  class="table ">
+      <thead>
+        <tr class="heading_row">
+          <th align="center" style="width: 150px;"><font size="14px">S. No</font></th>
+          <th style="width:300px;"><font size="14px">EMP ID</font></th>
+          <th style="width:500%;"><font size="14px">Name</font></th>
+          <th style="width:300px;"><font size="14px">Salary P/M</font></th>
+          <th style="width:500px;"><font size="14px">Salary P/A</font></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for value in employee_salary_details %}
+      <tr class="">
+          <td style="width: 150px; height:30px;" align="center"><font size="13px">{{forloop.counter}}</font></td>
+          <td style="width: 300px;" align="center"><font size="13px">{{value.0}}</font></td>
+          <td style="width: 500px;" align="center"><font size="13px">{{value.1}}</font></td>
+          <td style="width: 300px;" align="center"><font size="13px">{{value.2}}</font></td>
+          <td style="width: 500px;" align="center"><font size="13px">{{value.2|mul:12}}</font></td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+  <br>
+</div>
+
+</body>
+</html>

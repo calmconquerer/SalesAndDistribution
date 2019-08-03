@@ -797,7 +797,7 @@ def trial_balance(request):
             response['Content-Disposition'] = content
             return response
         return HttpResponse("Not Found")
-    return redirect('report')
+    return redirect('reports')
 
 
 def account_ledger(request):

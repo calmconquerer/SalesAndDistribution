@@ -1,0 +1,46 @@
+{% extends "transaction/base.html" %}
+{% block body %}
+
+<div class="card" style="width: 100%;">
+<div class="card-header">
+  <h4>Employee Salary</h4>
+</div>
+<ul class="list-group list-group-flush">
+<form  action="" id="new-salary-voucher" autocomplete="off"  method="post">
+  {% csrf_token %}
+  <li class="list-group-item">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="">Employee ID</label>
+            <input type="text" readonly class="form-control form-control-sm" required placeholder="" id="employee-id">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="">Employee Name</label>
+          <select class="form-control form-control-sm" name="full_name" id="full-name">
+            <option value="">select:</option>
+            {% for value in all_employee %}
+            <option value="{{value.id}}">{{value.full_name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="">Join Date</label>
+          <input type="date"  class="form-control form-control-sm" required value="" name="join_date">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="">Salary P/M</label>
+            <input type="text" required class="form-control form-control-sm" name="salary">
+        </div>
+      </div>
+    </li>
+      <br>
+    <div class="text-center">
+      <button type="submit" class="btn btn-outline-primary">Submit Salary</button>
+    </div>
+    <br>
+</form>
+</ul>
+</div>
+
+
+{% endblock body %}
